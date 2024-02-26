@@ -12,7 +12,7 @@ public class ReverseInteger {
 			reversed = reversed * 10 + remainder;
 		}
 		
-		return number;
+		return reversed;
 	}
 	
 }
