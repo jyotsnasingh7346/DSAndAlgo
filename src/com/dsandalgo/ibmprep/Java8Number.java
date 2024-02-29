@@ -100,7 +100,16 @@ public class Java8Number {
 		int min3 = list.stream().min(Integer::compare).get();
 		System.out.println("Min = " + min1 + ", " + min2 + ", " + min3);
 		
-		// 12. 
+		// 12. Reverse a list
+		List<Integer> reversedList = IntStream.range(0, list.size())
+                .mapToObj(i -> list.get(list.size() -i -1))
+                .collect(Collectors.toList());
+
+        System.out.println("Original List: " + list);
+        System.out.println("Reversed List: " + reversedList);
+        
+        int midElement = list.stream().map(i -> list.get(list.size()/2)).findFirst().get();
+        System.out.println("Mid element : " + midElement);
 		
 	}
 

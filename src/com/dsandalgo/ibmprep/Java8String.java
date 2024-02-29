@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Java8String {
@@ -84,7 +85,13 @@ public class Java8String {
 		
 		System.out.println("Are " + s1 + " and " + s2 +" anagrams ? " + s1.equals(s2));
 		
-		// 9. 
+		// 9. Find if a string is a palindrome
+		String isPalin = "radar"; // Example string
+
+        boolean isPalindrome = IntStream.range(0, isPalin.length() / 2)
+                .allMatch(i -> isPalin.charAt(i) == isPalin.charAt(isPalin.length() - i - 1));
+        
+        System.out.println("Is " + isPalin + " a palindrome? : " + isPalindrome);
 		
 		
 		
