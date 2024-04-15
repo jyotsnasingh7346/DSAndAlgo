@@ -1,4 +1,4 @@
-package com.dsandalgo.ibmprep;
+package com.dsandalgo.interviewPrep;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -9,7 +9,6 @@ import java.util.OptionalDouble;
 import java.util.OptionalInt;
 import java.util.Set;
 import java.util.function.Function;
-import java.util.function.IntUnaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -88,10 +87,15 @@ public class Java8Array {
 		
 		System.out.println("Sorted Distinct array : " + sortedDistinct);
 		
-		// 14. 
+		// 14. 2nd largest & smallest number in an array
+		int secondLargest = Arrays.stream(arr).distinct().boxed().sorted(Comparator.reverseOrder())
+								.skip(1).findFirst().get();
+		System.out.println("2nd largest number in the array: " + secondLargest);
 		
+		int secondSmallest = Arrays.stream(arr).boxed().distinct().sorted().skip(1).findFirst().get();
+		System.out.println("2nd smallest number in the array: " + secondSmallest);
 		
-		
+		// 15. 
 		
 	}
 

@@ -1,4 +1,4 @@
-package com.dsandalgo.ibmprep;
+package com.dsandalgo.multiThreading;
 
 public class DeadlockExample {
     private static final Object lock1 = new Object();

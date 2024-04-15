@@ -1,4 +1,4 @@
-package com.dsandalgo.ibmprep;
+package com.dsandalgo.interviewPrep;
 
 public class GeneratePassword {
 

@@ -1,4 +1,7 @@
-package com.dsandalgo.ibmprep;
+package com.dsandalgo.interviewPrep;
+
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class PeopleAndMonster {
 
@@ -16,27 +19,16 @@ public class PeopleAndMonster {
 		
 		String group = "PPPPPP@PPP@PP$PP";
 		
-		int killed = smallestGroup(group);
-		System.out.println(killed);
-
+		String minDead = Arrays.stream(group.split("[@$]"))
+                .min(Comparator.comparingInt(String::length)).orElse("");
+		
+		System.out.println("People to die = " + minDead);
+		
+		int miniDead = Arrays.stream(group.split("[@$]"))
+                .min(Comparator.comparingInt(String::length)).map(String::length).orElse(0);
+		System.out.println("Minimum number of people to die = " + miniDead);
+		
 	}
 
-	private static int smallestGroup(String group) {
-		int killed = Integer.MAX_VALUE;
-		
-		int countOfP = 0;
-		for (int i=0; i<group.length(); i++) {
-			countOfP++;
-			
-			if (group.charAt(i) == '@' || group.charAt(i) == '$') {
-				killed = Math.min(countOfP, killed);
-				countOfP = 0;
-			}
-		}
-		
-		killed = Math.min(killed, countOfP);
-		
-		return killed;
-	}
 
 }

@@ -1,4 +1,4 @@
-package com.dsandalgo.ibmprep;
+package com.dsandalgo.interviewPrep;
 
 import java.util.ArrayList;
 import java.util.List;

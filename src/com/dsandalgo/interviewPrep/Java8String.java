@@ -1,6 +1,7 @@
-package com.dsandalgo.ibmprep;
+package com.dsandalgo.interviewPrep;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -93,8 +94,10 @@ public class Java8String {
         
         System.out.println("Is " + isPalin + " a palindrome? : " + isPalindrome);
 		
-		
-		
+		// 10. Sort list of strings in increasing order of their length
+        List<String> collect = list.stream().sorted(Comparator.comparing(String::length))
+        		.collect(Collectors.toList());
+        System.out.println(collect);
 		
 	}
 

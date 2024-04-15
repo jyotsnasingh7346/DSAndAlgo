@@ -1,4 +1,4 @@
-package com.dsandalgo.ibmprep;
+package com.dsandalgo.interviewPrep;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

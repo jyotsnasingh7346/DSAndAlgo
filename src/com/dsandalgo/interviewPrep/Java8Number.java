@@ -1,4 +1,4 @@
-package com.dsandalgo.ibmprep;
+package com.dsandalgo.interviewPrep;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Java8Number {
 
@@ -100,7 +101,15 @@ public class Java8Number {
 		int min3 = list.stream().min(Integer::compare).get();
 		System.out.println("Min = " + min1 + ", " + min2 + ", " + min3);
 		
-		// 12. Reverse a list
+		// 12. Get 3 max & min from the list
+		List<Integer> collect6 = list.stream().sorted(Comparator.reverseOrder()).limit(3)
+											.collect(Collectors.toList());
+		System.out.println("3 Max numbers: " + collect6);
+		
+		List<Integer> collect7 = list.stream().sorted().limit(3).collect(Collectors.toList());
+		System.out.println("3 Min = " + collect7);
+		
+		// 13. Reverse a list
 		List<Integer> reversedList = IntStream.range(0, list.size())
                 .mapToObj(i -> list.get(list.size() -i -1))
                 .collect(Collectors.toList());
@@ -108,9 +117,14 @@ public class Java8Number {
         System.out.println("Original List: " + list);
         System.out.println("Reversed List: " + reversedList);
         
+        // 14. Find the mid element in the list
         int midElement = list.stream().map(i -> list.get(list.size()/2)).findFirst().get();
         System.out.println("Mid element : " + midElement);
 		
+        // 15. sum of all digits of a number
+        int digits = 12345;
+        int sum4 = Stream.of(String.valueOf(digits).split("")).collect(Collectors.summingInt(Integer::parseInt));
+        System.out.println("Sum of the digits of " + digits + " is: " + sum4);
 	}
 
 }
