@@ -22,12 +22,27 @@ public class MaxSubArray {
 		 * where n is the size of the input array.
 		 */
 		
-        int[] array = {1, -2, 3, -4, 5, -6, 7};
+        int[] array = {1, -2, 3, -4, 5, -6, 7, 18};
         int[] maxSubarray = findMaxSubarray(array);
         
         // Print the maximum subArray
         System.out.println("Max Subarray: " + Arrays.toString(maxSubarray));
+        System.out.println("Max Subarray Sum: " + findMaxSubarraySum(maxSubarray));
     }
+
+	public static int findMaxSubarraySum(int[] array) {
+
+		int maxEndingHere = Integer.MIN_VALUE;
+		int maxSoFar = 0;
+
+		for (int i : array) {
+			maxEndingHere = Math.max(i, maxEndingHere + i);
+			maxSoFar = Math.max(maxEndingHere, maxSoFar);
+		}
+
+		return maxSoFar;
+
+	}
 
     public static int[] findMaxSubarray(int[] array) {
         int maxSum = Integer.MIN_VALUE;

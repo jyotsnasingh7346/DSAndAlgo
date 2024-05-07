@@ -26,20 +26,17 @@ public class CiscoBracketsQuestion {
 			if(stack.isEmpty())
 				return false;
 			
-			char check;
+			char check = stack.pop();
 			switch(x) {
 				case ')':
-					check = stack.pop();
 					if (check == '[' || check == '{')
 						return false;
 					break;
 				case ']':
-					check = stack.pop();
 					if (check == '(' || check == '{')
 						return false;
 					break;
 				case '}':
-					check = stack.pop();
 					if (check == '[' || check == '(')
 						return false;
 					break;

@@ -1,8 +1,12 @@
 package com.dsandalgo.interviewPrep;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -11,6 +15,9 @@ import java.util.stream.Stream;
 public class Java8String {
 
 	public static void main(String[] args) {
+		
+		// map.computeIfPresent(a[i], (key, value) -> value + 1);
+        // map.computeIfAbsent(a[i], key -> 1);
 		
 		String str = "She sells sea shell on the sea shore";
 		Character ch = 's';
@@ -99,6 +106,49 @@ public class Java8String {
         		.collect(Collectors.toList());
         System.out.println(collect);
 		
+        // 11. Reverse each word of a string
+        String strr = Arrays.stream(str.split(" "))
+        					.map(word -> new StringBuffer(word).reverse())
+        					.collect(Collectors.joining(" "));
+        System.out.println("str reversed words : " + strr);
+        
+        // 12. From the list, find strings that start with numbers
+        List<String> list1 = new ArrayList<>();
+		list.add("1apple");
+		list.add("2banana");
+		list.add("3apple");
+		list.add("orange");
+		list.add("kiwi");
+		list.add("apple");
+        
+        List<String> collect2 = list1.stream()
+        		.filter(s -> Character.isDigit(s.charAt(0))).collect(Collectors.toList());
+        System.out.println(collect2);
+        
+        
+        // 13. Write simple java code for, whether given string have character "i"  
+        // If input is "hello" word, output will be false, as the word doesn't have letter "i". 
+        // str1 = "Hi, from @Heaven, y#&ou h@ave the po$wer";
+        
+        boolean containsI = str1.chars().mapToObj(c -> Character.toLowerCase(Character.valueOf((char) c)))
+        			.anyMatch(c -> c == 'i');
+        
+        System.out.println(containsI);
+        
+        // 14. Last element in a list of string
+        Optional<String> last = list.stream().skip(list.size()-1).findFirst();
+        
+        System.out.println("Last element in list : " + last);
+        
+        // 15. Given a DOB, print the Age of Person in years
+        LocalDate dob = LocalDate.of(1995, 9, 15);
+        LocalDate today = LocalDate.now();
+        
+        System.out.println("Age : " + ChronoUnit.YEARS.between(dob, today));
+        
+        // 16. Fibonacci series
+        
+        
 	}
 
 }

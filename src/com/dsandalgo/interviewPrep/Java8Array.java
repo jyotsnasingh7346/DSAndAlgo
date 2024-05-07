@@ -1,10 +1,12 @@
 package com.dsandalgo.interviewPrep;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.OptionalInt;
 import java.util.Set;
@@ -55,6 +57,15 @@ public class Java8Array {
 			.forEach(i -> System.out.print(i + " "));
 		System.out.println();
 		
+		
+		Arrays.stream(arr).boxed()
+        .collect(Collectors.groupingBy(i -> i, Collectors.counting())) // Group by element and count occurrences
+        .entrySet()
+		.stream()
+        .filter(entry -> entry.getValue() > 1) // Filter entries with count greater than 1 (duplicates)
+        .map(Map.Entry::getKey) // Get the key (duplicate element)
+        .collect(Collectors.toList()); // Collect duplicate elements into a list
+		
 		// 8. Sum of even elements of an array
 		int sum2 = Arrays.stream(arr).filter(i -> i%2 == 0).sum();
 		System.out.println("sum of even elements : " + sum2);
@@ -95,7 +106,37 @@ public class Java8Array {
 		int secondSmallest = Arrays.stream(arr).boxed().distinct().sorted().skip(1).findFirst().get();
 		System.out.println("2nd smallest number in the array: " + secondSmallest);
 		
-		// 15. 
+		// 15. Common elements between 2 arrays
+		int[] common = IntStream.of(arr1).filter(x -> Arrays.stream(arr2).anyMatch(y -> y == x)).toArray();
+		
+		System.out.println("Common elements : " + Arrays.asList(common));
+		
+		// 16. sum & avg of all elements in an array
+		int summer = Arrays.stream(arr1).sum();
+		double avgr = Arrays.stream(arr2).average().getAsDouble();
+		
+		System.out.println("Sum = " + summer + ", Average = " + avgr);
+		
+		// 17. reverse an integer array
+		int[] reversedArray = Arrays.stream(arr1)
+				  .boxed() // Convert int stream to Stream<Integer>
+				  .sorted(Collections.reverseOrder()) // Sort in descending order
+				  .mapToInt(Integer::intValue) // Convert back to int stream
+				  .toArray();
+		
+		for (int i : reversedArray) {System.out.print(i+ " ");}
+		
+		// 18. Last element of an array
+		Arrays.stream(arr).skip(arr.length-1).findFirst();
+		
+		Optional<Integer> last = Arrays.stream(arr).boxed().sorted(Comparator.reverseOrder()).findFirst();
+		System.out.println("Last index : " + last);
+		
+		// 19. 
+		Optional<Integer> find2ndLargest = Arrays.stream(arr).boxed().sorted(Collections.reverseOrder()).skip(1)
+				.findFirst();
+		
+		
 		
 	}
 

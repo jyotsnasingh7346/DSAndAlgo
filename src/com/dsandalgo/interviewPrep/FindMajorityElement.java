@@ -20,7 +20,7 @@ public class FindMajorityElement {
 		/*
 		 * Question -> Find the majority element in the array. 
 		 * A majority element in an array of size n is an element that appears more than n/2 times (
-		 * and hence there is at most one such element).		 * 
+		 * and hence there is at most one such element).		 
 		 * Input : array1= {3, 3, 4, 2, 4, 4, 2, 4, 4} 
 		 * Output : 4 
 		 * Explanation: The frequency of 4 is 5 which is greater than the half of the size of the array size.
@@ -33,9 +33,15 @@ public class FindMajorityElement {
 		int[] arr = {3, 3, 4, 2, 4, 4, 2, 4, 4};
 		int n = arr.length/2;
 		
-		List<Integer> collect = Arrays.stream(arr).boxed().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
-			.entrySet().stream().filter(i -> i.getValue()>n).map(Map.Entry::getKey).collect(Collectors.toList());
-		System.out.println(collect);
+		List<Integer> collect = Arrays.stream(arr).boxed()
+					.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+					.entrySet().stream()
+					.filter(i -> i.getValue()>n)
+					.map(Map.Entry::getKey).collect(Collectors.toList());
+		
+		int i = collect.get(0);
+		
+		System.out.println(i);
 	}
 
 }

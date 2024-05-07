@@ -1,5 +1,7 @@
 package com.dsandalgo.string;
 
+import java.util.stream.IntStream;
+
 public class Palindrome {
 
 	/*
@@ -11,7 +13,18 @@ public class Palindrome {
 	 * */
 	
 	public boolean isPalindrome(String one) {
+		// SOLUTION 01 : 
+		
+		String isPalin = "radar"; // Example string
 
+        boolean isPalindrome = IntStream.range(0, isPalin.length() / 2)
+                .allMatch(i -> isPalin.charAt(i) == isPalin.charAt(isPalin.length() - i - 1));
+        
+        System.out.println("Is " + isPalin + " a palindrome? : " + isPalindrome);
+        
+        
+        // SOLUTION 02 : 
+		
 		// 1. convert into lowercase
 		one = one.toLowerCase();
 		

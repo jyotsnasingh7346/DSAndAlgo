@@ -1,5 +1,8 @@
 package com.dsandalgo.string;
 
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class Anagrams {
 
 	/*
@@ -19,7 +22,18 @@ public class Anagrams {
 	 * */
 	
 	public boolean isAnagram(String one, String two) {
+		// SOLUTION 01 : 
+		// 8. Check if 2 Strings are anagrams
+		String s1 = "fluster";
+		String s2 = "restful";
+
+		s1 = Stream.of(s1.split("")).map(String::toLowerCase).sorted().collect(Collectors.joining());
+		s2 = Stream.of(s2.split("")).map(String::toLowerCase).sorted().collect(Collectors.joining());
+
+		System.out.println("Are " + s1 + " and " + s2 + " anagrams ? " + s1.equals(s2));
 		
+		
+		// SOLUTION 02 : 
 		one = one.toUpperCase();
 		two = two.toUpperCase();
 		

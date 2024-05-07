@@ -80,6 +80,10 @@ public class Java8Number {
 		List<Integer> odds = list.stream().filter(i -> i%2 != 0).collect(Collectors.toList());
 		System.out.println("Odd numbers from the list : " + odds);
 		
+		// find sum of all odd numbers from the list
+		int sum9 = list.stream().filter(i -> i%2 !=0).mapToInt(Integer::intValue).sum();
+		System.out.println("Sum of all odd numbers : " + sum9);
+		
 		// 8. Print odd numbers from 1 - 100
 		System.out.println("Print odd numbers from 1 - 100 : ");
 		IntStream.rangeClosed(1, 100).filter(i -> i%2 != 0).forEach(i -> System.out.print(" " + i));
@@ -125,6 +129,12 @@ public class Java8Number {
         int digits = 12345;
         int sum4 = Stream.of(String.valueOf(digits).split("")).collect(Collectors.summingInt(Integer::parseInt));
         System.out.println("Sum of the digits of " + digits + " is: " + sum4);
+        
+        // 16. Sum of 1st 10 natural numbers
+        int sum5 = IntStream.rangeClosed(1, 10).sum();
+        System.out.println("Sum of 1-10 : " + sum5);
+        
+        // 17. 
 	}
 
 }
